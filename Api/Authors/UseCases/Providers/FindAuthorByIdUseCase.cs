@@ -17,6 +17,6 @@ public class FindAuthorByIdUseCase : IFindAuthorByIdUseCase
 
     public DetailAuthorViewModel Execute(int authorId)
     {
-        return _authorMapper.toDetailViewModel(_authorRepository.FindById(authorId));
+        return _authorMapper.ToDetailViewModel(_authorRepository.FindById(authorId));
     }
 }

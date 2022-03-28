@@ -19,6 +19,6 @@ public class CreateAuthorUseCase : ICreateAuthorUseCase
     {
         var authorToCreate = _authorMapper.ToModel(createAuthorViewModel);
         var createdAuthor = _authorRepository.Create(authorToCreate);
-        return _authorMapper.toDetailViewModel(createdAuthor);
+        return _authorMapper.ToDetailViewModel(createdAuthor);
     }
 }

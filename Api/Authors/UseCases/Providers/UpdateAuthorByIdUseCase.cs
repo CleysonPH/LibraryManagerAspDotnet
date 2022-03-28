@@ -19,6 +19,6 @@ public class UpdateAuthorByIdUseCase : IUpdateAuthorByIdUseCase
     {
         var authorToUpdate = _authorMapper.ToModel(updateAuthorViewModel);
         var updatedAuthor = _authorRepository.UpdateById(authorId, authorToUpdate);
-        return _authorMapper.toDetailViewModel(updatedAuthor);
+        return _authorMapper.ToDetailViewModel(updatedAuthor);
     }
 }

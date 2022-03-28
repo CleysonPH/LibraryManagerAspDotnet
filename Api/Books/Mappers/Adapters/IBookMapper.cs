@@ -5,6 +5,6 @@ namespace LibraryManager.Api.Books.Mappers;
 
 public interface IBookMapper
 {
-    Book toModel(CreateBookViewModel createBookViewModel);
-    DetailBookViewModel toDetailViewModel(Book book);
+    Book ToModel(CreateBookViewModel createBookViewModel);
+    DetailBookViewModel ToDetailViewModel(Book book);
 }

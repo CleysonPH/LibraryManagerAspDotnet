@@ -10,11 +10,16 @@ public class BookController : ControllerBase
 {
     private readonly IListBookUseCase _listBookUseCase;
     private readonly ICreateBookUseCase _createBookUseCase;
+    private readonly IFindBookByIdUseCase _findBookByIdUseCase;
 
-    public BookController(IListBookUseCase listBookUseCase, ICreateBookUseCase createBookUseCase)
+    public BookController(
+        IListBookUseCase listBookUseCase,
+        ICreateBookUseCase createBookUseCase,
+        IFindBookByIdUseCase findBookByIdUseCase)
     {
         _listBookUseCase = listBookUseCase;
         _createBookUseCase = createBookUseCase;
+        _findBookByIdUseCase = findBookByIdUseCase;
     }
 
     [HttpPost]
@@ -27,5 +32,11 @@ public class BookController : ControllerBase
     public ActionResult<IEnumerable<DetailBookViewModel>> FindAll()
     {
         return Ok(_listBookUseCase.Execute());
+    }
+
+    [HttpGet("{bookId}")]
+    public ActionResult<DetailBookViewModel> FindById([FromRoute] int bookId)
+    {
+        return Ok(_findBookByIdUseCase.Execute(bookId));
     }
 }

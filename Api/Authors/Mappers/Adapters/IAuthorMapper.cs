@@ -7,5 +7,5 @@ public interface IAuthorMapper
 {
     Author ToModel(CreateAuthorViewModel createAuthorViewModel);
     Author ToModel(UpdateAuthorViewModel updateAuthorViewModel);
-    DetailAuthorViewModel toDetailViewModel(Author author);
+    DetailAuthorViewModel ToDetailViewModel(Author author);
 }

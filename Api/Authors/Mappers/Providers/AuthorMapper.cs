@@ -5,7 +5,7 @@ namespace LibraryManager.Api.Authors.Mappers;
 
 public class AuthorMapper : IAuthorMapper
 {
-    public DetailAuthorViewModel toDetailViewModel(Author author)
+    public DetailAuthorViewModel ToDetailViewModel(Author author)
     {
         return new DetailAuthorViewModel
         {

@@ -17,8 +17,8 @@ public class CreateBookUseCase : ICreateBookUseCase
 
     public DetailBookViewModel Execute(CreateBookViewModel createBookViewModel)
     {
-        var bookToCreate = _bookMapper.toModel(createBookViewModel);
+        var bookToCreate = _bookMapper.ToModel(createBookViewModel);
         var createdBook = _bookRepository.Create(bookToCreate);
-        return _bookMapper.toDetailViewModel(createdBook);
+        return _bookMapper.ToDetailViewModel(createdBook);
     }
 }

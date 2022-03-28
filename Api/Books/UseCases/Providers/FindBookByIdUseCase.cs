@@ -4,20 +4,19 @@ using LibraryManager.Core.Repositories;
 
 namespace LibraryManager.Api.Books.UseCases;
 
-public class ListBookUseCase : IListBookUseCase
+public class FindBookByIdUseCase : IFindBookByIdUseCase
 {
     private readonly IBookMapper _bookMapper;
     private readonly IBookRepository _bookRepository;
 
-    public ListBookUseCase(IBookMapper bookMapper, IBookRepository bookRepository)
+    public FindBookByIdUseCase(IBookMapper bookMapper, IBookRepository bookRepository)
     {
         _bookMapper = bookMapper;
         _bookRepository = bookRepository;
     }
 
-    public IEnumerable<DetailBookViewModel> Execute()
+    public DetailBookViewModel Execute(int bookId)
     {
-        return _bookRepository.FindAll()
-            .Select(_bookMapper.ToDetailViewModel);
+        return _bookMapper.ToDetailViewModel(_bookRepository.FindById(bookId));
     }
 }

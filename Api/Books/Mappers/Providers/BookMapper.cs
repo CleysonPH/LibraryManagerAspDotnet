@@ -16,18 +16,18 @@ public class BookMapper : IBookMapper
         _authorRepository = authorRepository;
     }
 
-    public DetailBookViewModel toDetailViewModel(Book book)
+    public DetailBookViewModel ToDetailViewModel(Book book)
     {
         return new DetailBookViewModel
         {
             ID = book.ID,
             Title = book.Title,
             Description = book.Description,
-            Author = _authorMapper.toDetailViewModel(book.Author)
+            Author = _authorMapper.ToDetailViewModel(book.Author)
         };
     }
 
-    public Book toModel(CreateBookViewModel createBookViewModel)
+    public Book ToModel(CreateBookViewModel createBookViewModel)
     {
         return new Book
         {

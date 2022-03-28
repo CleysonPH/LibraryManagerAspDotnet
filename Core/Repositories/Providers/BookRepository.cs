@@ -39,6 +39,7 @@ public class BookRepository : IBookRepository
     {
         var book = _context.Books
             .Where(book => book.ID == id)
+            .Include(book => book.Author)
             .FirstOrDefault();
         return book ?? throw new BookNotFoundException();
     }

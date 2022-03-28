@@ -18,6 +18,6 @@ public class ListAuthorsUseCase : IListAuthorsUseCase
     public IEnumerable<DetailAuthorViewModel> Execute()
     {
         return _authorRepository.FindAll()
-            .Select(_authorMapper.toDetailViewModel);
+            .Select(_authorMapper.ToDetailViewModel);
     }
 }
