@@ -15,6 +15,9 @@ builder.Services.AddSwaggerGen();
 // Config DBContext
 builder.Services.AddDbContext<LibraryManagerContext>();
 
+// Config JsonSerializer
+JsonSerializerConfig.ExecuteCondfig(builder);
+
 // Config Dependecy Injection of Author
 AuthorDIConfig.ExecuteConfig(builder);
 
