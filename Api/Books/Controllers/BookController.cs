@@ -12,23 +12,31 @@ public class BookController : ControllerBase
     private readonly ICreateBookUseCase _createBookUseCase;
     private readonly IFindBookByIdUseCase _findBookByIdUseCase;
     private readonly IUpdateBookByIdUseCase _updateBookByIdUseCase;
+    private readonly IDeleteBookByIdUseCase _deleteBookByIdUseCase;
 
     public BookController(
         IListBookUseCase listBookUseCase,
         ICreateBookUseCase createBookUseCase,
         IFindBookByIdUseCase findBookByIdUseCase,
-        IUpdateBookByIdUseCase updateBookByIdUseCase)
+        IUpdateBookByIdUseCase updateBookByIdUseCase,
+        IDeleteBookByIdUseCase deleteBookByIdUseCase)
     {
         _listBookUseCase = listBookUseCase;
         _createBookUseCase = createBookUseCase;
         _findBookByIdUseCase = findBookByIdUseCase;
         _updateBookByIdUseCase = updateBookByIdUseCase;
+        _deleteBookByIdUseCase = deleteBookByIdUseCase;
     }
 
     [HttpPost]
-    public DetailBookViewModel Create([FromBody] CreateBookViewModel createBookViewModel)
+    public ActionResult<DetailBookViewModel> Create([FromBody] CreateBookViewModel createBookViewModel)
     {
-        return _createBookUseCase.Execute(createBookViewModel);
+        var createdBookViewModel = _createBookUseCase.Execute(createBookViewModel);
+        return CreatedAtAction(
+            nameof(FindById),
+            new { BookID = createdBookViewModel.ID },
+            createdBookViewModel
+        );
     }
 
     [HttpGet]
@@ -47,5 +55,12 @@ public class BookController : ControllerBase
     public ActionResult<DetailBookViewModel> UpdateById([FromRoute] int bookId, [FromBody] UpdateBookViewModel updateBookViewModel)
     {
         return Ok(_updateBookByIdUseCase.Execute(bookId, updateBookViewModel));
+    }
+
+    [HttpDelete("{bookId}")]
+    public ActionResult DeleteById([FromRoute] int bookId)
+    {
+        _deleteBookByIdUseCase.Execute(bookId);
+        return NoContent();
     }
 }

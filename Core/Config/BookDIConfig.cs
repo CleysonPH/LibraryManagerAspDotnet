@@ -14,5 +14,6 @@ public static class BookDIConfig
         builder.Services.AddScoped<IListBookUseCase, ListBookUseCase>();
         builder.Services.AddScoped<IFindBookByIdUseCase, FindBookByIdUseCase>();
         builder.Services.AddScoped<IUpdateBookByIdUseCase, UpdateBookByIdUseCase>();
+        builder.Services.AddScoped<IDeleteBookByIdUseCase, DeleteBookByIdUseCase>();
     }
 }
