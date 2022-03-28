@@ -15,10 +15,10 @@ public class UpdateAuthorByIdUseCase : IUpdateAuthorByIdUseCase
         _authorRepository = authorRepository;
     }
 
-    public DetailAuthorViewModel Execute(UpdateAuthorViewModel updateAuthorViewModel)
+    public DetailAuthorViewModel Execute(int authorId, UpdateAuthorViewModel updateAuthorViewModel)
     {
         var authorToUpdate = _authorMapper.ToModel(updateAuthorViewModel);
-        var updatedAuthor = _authorRepository.UpdateById(updateAuthorViewModel.ID, authorToUpdate);
+        var updatedAuthor = _authorRepository.UpdateById(authorId, authorToUpdate);
         return _authorMapper.toDetailViewModel(updatedAuthor);
     }
 }

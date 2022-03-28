@@ -63,7 +63,6 @@ public class AuthorsControllers : ControllerBase
     public ActionResult<DetailAuthorViewModel> UpdateById(
         [FromRoute] int authorId, [FromBody] UpdateAuthorViewModel updateAuthorViewModel)
     {
-        updateAuthorViewModel.ID = authorId;
-        return _updateAuthorByIdUseCase.Execute(updateAuthorViewModel);
+        return _updateAuthorByIdUseCase.Execute(authorId, updateAuthorViewModel);
     }
 }
