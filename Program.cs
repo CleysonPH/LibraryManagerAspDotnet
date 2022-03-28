@@ -12,10 +12,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Config DBContext
-builder.Services.AddDbContext<LibraryManagerContext>();
+builder.ExecuteDatasourceConfig();
 
 // Config JsonSerializer
-JsonSerializerConfig.ExecuteConfig(builder);
+builder.ExecuteSerializerConfig();
 
 // Config Dependecy Injection of Author
 builder.ExecuteAuthorConfig();
