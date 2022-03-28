@@ -37,4 +37,15 @@ public class BookMapper : IBookMapper
             Author = _authorRepository.FindById(createBookViewModel.AuthorId)
         };
     }
+
+    public Book ToModel(UpdateBookViewModel updateBookViewModel)
+    {
+        return new Book
+        {
+            Title = updateBookViewModel.Title,
+            Description = updateBookViewModel.Description,
+            AuthorID = updateBookViewModel.AuthorId,
+            Author = _authorRepository.FindById(updateBookViewModel.AuthorId)
+        };
+    }
 }

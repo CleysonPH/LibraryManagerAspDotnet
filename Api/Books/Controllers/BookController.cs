@@ -11,15 +11,18 @@ public class BookController : ControllerBase
     private readonly IListBookUseCase _listBookUseCase;
     private readonly ICreateBookUseCase _createBookUseCase;
     private readonly IFindBookByIdUseCase _findBookByIdUseCase;
+    private readonly IUpdateBookByIdUseCase _updateBookByIdUseCase;
 
     public BookController(
         IListBookUseCase listBookUseCase,
         ICreateBookUseCase createBookUseCase,
-        IFindBookByIdUseCase findBookByIdUseCase)
+        IFindBookByIdUseCase findBookByIdUseCase,
+        IUpdateBookByIdUseCase updateBookByIdUseCase)
     {
         _listBookUseCase = listBookUseCase;
         _createBookUseCase = createBookUseCase;
         _findBookByIdUseCase = findBookByIdUseCase;
+        _updateBookByIdUseCase = updateBookByIdUseCase;
     }
 
     [HttpPost]
@@ -38,5 +41,11 @@ public class BookController : ControllerBase
     public ActionResult<DetailBookViewModel> FindById([FromRoute] int bookId)
     {
         return Ok(_findBookByIdUseCase.Execute(bookId));
+    }
+
+    [HttpPut("{bookId}")]
+    public ActionResult<DetailBookViewModel> UpdateById([FromRoute] int bookId, [FromBody] UpdateBookViewModel updateBookViewModel)
+    {
+        return Ok(_updateBookByIdUseCase.Execute(bookId, updateBookViewModel));
     }
 }
