@@ -14,6 +14,7 @@ public class LibraryManagerContext : DbContext
     }
 
     public DbSet<Author> Authors => Set<Author>();
+    public DbSet<Book> Books => Set<Book>();
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -23,5 +24,6 @@ public class LibraryManagerContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration<Author>(new AuthorConfig());
+        modelBuilder.ApplyConfiguration<Book>(new BookConfig());
     }
 }

@@ -6,7 +6,7 @@ namespace LibraryManager.Core.Config;
 
 public static class AuthorDIConfig
 {
-    public static void ExecuteConfig(WebApplicationBuilder builder)
+    public static void ExecuteAuthorConfig(this WebApplicationBuilder builder)
     {
         builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
         builder.Services.AddScoped<IAuthorMapper, AuthorMapper>();

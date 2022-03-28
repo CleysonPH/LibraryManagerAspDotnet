@@ -29,7 +29,7 @@ public class AuthorRepository : IAuthorRepository
 
     public IEnumerable<Author> FindAll()
     {
-        return _context.Authors;
+        return _context.Authors.ToList();
     }
 
     public Author FindById(int id)

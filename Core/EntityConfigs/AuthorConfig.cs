@@ -1,7 +1,6 @@
 using LibraryManager.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.Extensions.Localization;
 
 namespace LibraryManager.Core.EntityConfigs;
 

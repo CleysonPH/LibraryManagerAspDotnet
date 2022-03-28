@@ -4,7 +4,7 @@ namespace LibraryManager.Core.Config;
 
 public static class JsonSerializerConfig
 {
-    public static void ExecuteCondfig(WebApplicationBuilder builder)
+    public static void ExecuteConfig(WebApplicationBuilder builder)
     {
         builder.Services.AddMvc().AddJsonOptions(options =>
         {

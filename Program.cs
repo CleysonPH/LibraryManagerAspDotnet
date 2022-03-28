@@ -15,10 +15,12 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<LibraryManagerContext>();
 
 // Config JsonSerializer
-JsonSerializerConfig.ExecuteCondfig(builder);
+JsonSerializerConfig.ExecuteConfig(builder);
 
 // Config Dependecy Injection of Author
-AuthorDIConfig.ExecuteConfig(builder);
+builder.ExecuteAuthorConfig();
+// Config Dependecy Injection of Book
+builder.ExecuteBookConfig();
 
 var app = builder.Build();
 
