@@ -12,17 +12,20 @@ public class AuthorsControllers : ControllerBase
     private readonly ICreateAuthorUseCase _createAuthorUseCase;
     private readonly IFindAuthorByIdUseCase _findAuthorByIdUseCase;
     private readonly IDeleteAuthorByIdUseCase _deleteAuthorByIdUseCase;
+    private readonly IUpdateAuthorByIdUseCase _updateAuthorByIdUseCase;
 
     public AuthorsControllers(
         IListAuthorsUseCase listAuthorsUseCase,
         ICreateAuthorUseCase createAuthorUseCase,
         IFindAuthorByIdUseCase findAuthorByIdUseCase,
-        IDeleteAuthorByIdUseCase deleteAuthorByIdUseCase)
+        IDeleteAuthorByIdUseCase deleteAuthorByIdUseCase,
+        IUpdateAuthorByIdUseCase updateAuthorByIdUseCase)
     {
         _listAuthorsUseCase = listAuthorsUseCase;
         _createAuthorUseCase = createAuthorUseCase;
         _findAuthorByIdUseCase = findAuthorByIdUseCase;
         _deleteAuthorByIdUseCase = deleteAuthorByIdUseCase;
+        _updateAuthorByIdUseCase = updateAuthorByIdUseCase;
     }
 
     [HttpGet]
@@ -54,5 +57,13 @@ public class AuthorsControllers : ControllerBase
     {
         _deleteAuthorByIdUseCase.Execute(authorId);
         return NoContent();
+    }
+
+    [HttpPut("{authorId}")]
+    public ActionResult<DetailAuthorViewModel> UpdateById(
+        [FromRoute] int authorId, [FromBody] UpdateAuthorViewModel updateAuthorViewModel)
+    {
+        updateAuthorViewModel.ID = authorId;
+        return _updateAuthorByIdUseCase.Execute(updateAuthorViewModel);
     }
 }

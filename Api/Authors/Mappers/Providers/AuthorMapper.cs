@@ -23,4 +23,13 @@ public class AuthorMapper : IAuthorMapper
             Bio = createAuthorViewModel.Bio
         };
     }
+
+    public Author ToModel(UpdateAuthorViewModel updateAuthorViewModel)
+    {
+        return new Author
+        {
+            Name = updateAuthorViewModel.Name,
+            Bio = updateAuthorViewModel.Bio
+        };
+    }
 }

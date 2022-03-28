@@ -14,5 +14,6 @@ public static class AuthorDIConfig
         builder.Services.AddScoped<IListAuthorsUseCase, ListAuthorsUseCase>();
         builder.Services.AddScoped<IFindAuthorByIdUseCase, FindAuthorByIdUseCase>();
         builder.Services.AddScoped<IDeleteAuthorByIdUseCase, DeleteAuthorByIdUseCase>();
+        builder.Services.AddScoped<IUpdateAuthorByIdUseCase, UpdateAuthorByIdUseCase>();
     }
 }
