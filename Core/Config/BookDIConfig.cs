@@ -11,5 +11,6 @@ public static class BookDIConfig
         builder.Services.AddScoped<IBookRepository, BookRepository>();
         builder.Services.AddScoped<IBookMapper, BookMapper>();
         builder.Services.AddScoped<ICreateBookUseCase, CreateBookUseCase>();
+        builder.Services.AddScoped<IListBookUseCase, ListBookUseCase>();
     }
 }

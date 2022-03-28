@@ -1,6 +1,7 @@
 using LibraryManager.Core.Contexts;
 using LibraryManager.Core.Exceptions;
 using LibraryManager.Core.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManager.Core.Repositories;
 
@@ -29,7 +30,9 @@ public class BookRepository : IBookRepository
 
     public IEnumerable<Book> FindAll()
     {
-        return _context.Books.ToList();
+        return _context.Books
+            .Include(book => book.Author)
+            .ToList();
     }
 
     public Book FindById(int id)

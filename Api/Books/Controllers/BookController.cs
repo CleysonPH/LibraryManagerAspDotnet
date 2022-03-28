@@ -8,10 +8,12 @@ namespace LibraryManager.Api.Books.Controllers;
 [Route("/api/books")]
 public class BookController : ControllerBase
 {
+    private readonly IListBookUseCase _listBookUseCase;
     private readonly ICreateBookUseCase _createBookUseCase;
 
-    public BookController(ICreateBookUseCase createBookUseCase)
+    public BookController(IListBookUseCase listBookUseCase, ICreateBookUseCase createBookUseCase)
     {
+        _listBookUseCase = listBookUseCase;
         _createBookUseCase = createBookUseCase;
     }
 
@@ -19,5 +21,11 @@ public class BookController : ControllerBase
     public DetailBookViewModel Create([FromBody] CreateBookViewModel createBookViewModel)
     {
         return _createBookUseCase.Execute(createBookViewModel);
+    }
+
+    [HttpGet]
+    public ActionResult<IEnumerable<DetailBookViewModel>> FindAll()
+    {
+        return Ok(_listBookUseCase.Execute());
     }
 }
