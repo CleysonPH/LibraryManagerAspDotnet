@@ -30,7 +30,7 @@ public class AuthorRepository : IAuthorRepository
 
     public bool ExistsById(int id)
     {
-        return _context.Authors.Count(author => author.ID == id) > 0;
+        return _context.Authors.Count(author => author.Id == id) > 0;
     }
 
     public IEnumerable<Author> FindAll()
@@ -41,7 +41,7 @@ public class AuthorRepository : IAuthorRepository
     public Author FindById(int id)
     {
         var author = _context.Authors
-            .Where(author => author.ID == id)
+            .Where(author => author.Id == id)
             .FirstOrDefault();
         return author ?? throw new AuthorNotFoundException();
     }
@@ -50,7 +50,7 @@ public class AuthorRepository : IAuthorRepository
     {
         if (ExistsById(id))
         {
-            model.ID = id;
+            model.Id = id;
             _context.Entry<Author>(model).State = EntityState.Modified;
             _context.SaveChanges();
             return model;

@@ -30,7 +30,7 @@ public class BookRepository : IBookRepository
 
     public bool ExistsById(int id)
     {
-        return _context.Books.Count(book => book.ID == id) > 0;
+        return _context.Books.Count(book => book.Id == id) > 0;
     }
 
     public IEnumerable<Book> FindAll()
@@ -43,7 +43,7 @@ public class BookRepository : IBookRepository
     public Book FindById(int id)
     {
         var book = _context.Books
-            .Where(book => book.ID == id)
+            .Where(book => book.Id == id)
             .Include(book => book.Author)
             .FirstOrDefault();
         return book ?? throw new BookNotFoundException();
@@ -53,7 +53,7 @@ public class BookRepository : IBookRepository
     {
         if (ExistsById(id))
         {
-            model.ID = id;
+            model.Id = id;
             _context.Entry<Book>(model).State = EntityState.Modified;
             _context.SaveChanges();
             return model;

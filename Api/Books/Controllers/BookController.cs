@@ -34,7 +34,7 @@ public class BookController : ControllerBase
         var createdBookViewModel = _createBookUseCase.Execute(createBookViewModel);
         return CreatedAtAction(
             nameof(FindById),
-            new { BookID = createdBookViewModel.ID },
+            new { BookId = createdBookViewModel.Id },
             createdBookViewModel
         );
     }

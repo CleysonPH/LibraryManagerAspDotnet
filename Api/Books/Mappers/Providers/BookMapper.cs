@@ -20,7 +20,7 @@ public class BookMapper : IBookMapper
     {
         return new DetailBookViewModel
         {
-            ID = book.ID,
+            Id = book.Id,
             Title = book.Title,
             Description = book.Description,
             Author = _authorMapper.ToDetailViewModel(book.Author)
@@ -33,7 +33,7 @@ public class BookMapper : IBookMapper
         {
             Title = createBookViewModel.Title,
             Description = createBookViewModel.Description,
-            AuthorID = createBookViewModel.AuthorId,
+            AuthorId = createBookViewModel.AuthorId,
             Author = _authorRepository.FindById(createBookViewModel.AuthorId)
         };
     }
@@ -44,7 +44,7 @@ public class BookMapper : IBookMapper
         {
             Title = updateBookViewModel.Title,
             Description = updateBookViewModel.Description,
-            AuthorID = updateBookViewModel.AuthorId,
+            AuthorId = updateBookViewModel.AuthorId,
             Author = _authorRepository.FindById(updateBookViewModel.AuthorId)
         };
     }

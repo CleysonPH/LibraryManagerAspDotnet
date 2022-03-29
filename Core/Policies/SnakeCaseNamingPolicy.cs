@@ -1,5 +1,5 @@
 using System.Text.Json;
-using LibraryManager.Core.Extensions;
+using CaseExtensions;
 
 namespace LibraryManager.Core.Policies;
 

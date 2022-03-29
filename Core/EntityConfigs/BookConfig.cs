@@ -8,7 +8,7 @@ public class BookConfig : IEntityTypeConfiguration<Book>
 {
     public void Configure(EntityTypeBuilder<Book> builder)
     {
-        builder.HasKey(book => book.ID);
+        builder.HasKey(book => book.Id);
 
         builder.Property<string>(book => book.Title)
             .IsRequired()
@@ -21,6 +21,6 @@ public class BookConfig : IEntityTypeConfiguration<Book>
 
         builder.HasOne(book => book.Author)
             .WithMany(author => author.Books)
-            .HasForeignKey(book => book.AuthorID);
+            .HasForeignKey(book => book.AuthorId);
     }
 }

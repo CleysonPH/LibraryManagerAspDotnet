@@ -8,7 +8,7 @@ public class AuthorConfig : IEntityTypeConfiguration<Author>
 {
     public void Configure(EntityTypeBuilder<Author> builder)
     {
-        builder.HasKey(author => author.ID);
+        builder.HasKey(author => author.Id);
 
         builder.Property<string>(author => author.Name)
             .IsRequired()

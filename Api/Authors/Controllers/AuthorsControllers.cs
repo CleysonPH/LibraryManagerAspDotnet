@@ -41,7 +41,7 @@ public class AuthorsControllers : ControllerBase
         var createdAuthorViewModel = _createAuthorUseCase.Execute(createAuthorViewModel);
         return CreatedAtAction(
             nameof(FindById),
-            new { AuthorID = createdAuthorViewModel.ID },
+            new { AuthorId = createdAuthorViewModel.Id },
             createdAuthorViewModel
         );
     }

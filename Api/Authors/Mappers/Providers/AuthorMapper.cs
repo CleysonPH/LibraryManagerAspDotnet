@@ -9,7 +9,7 @@ public class AuthorMapper : IAuthorMapper
     {
         return new DetailAuthorViewModel
         {
-            ID = author.ID,
+            Id = author.Id,
             Name = author.Name,
             Bio = author.Bio
         };
