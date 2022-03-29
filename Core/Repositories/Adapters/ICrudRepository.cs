@@ -7,4 +7,5 @@ public interface ICrudRepository<Model, ID>
     Model FindById(ID id);
     Model UpdateById(ID id, Model model);
     void DeleteById(ID id);
+    bool ExistsById(ID id);
 }

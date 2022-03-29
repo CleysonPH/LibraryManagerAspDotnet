@@ -28,6 +28,11 @@ public class BookRepository : IBookRepository
         _context.SaveChanges();
     }
 
+    public bool ExistsById(int id)
+    {
+        return _context.Books.Count(book => book.ID == id) > 0;
+    }
+
     public IEnumerable<Book> FindAll()
     {
         return _context.Books
@@ -46,11 +51,13 @@ public class BookRepository : IBookRepository
 
     public Book UpdateById(int id, Book model)
     {
-        var book = FindById(id);
-        book.Title = model.Title;
-        book.Description = model.Description;
-        book.Author = model.Author;
-        _context.SaveChanges();
-        return book;
+        if (ExistsById(id))
+        {
+            model.ID = id;
+            _context.Entry<Book>(model).State = EntityState.Modified;
+            _context.SaveChanges();
+            return model;
+        }
+        throw new BookNotFoundException();
     }
 }

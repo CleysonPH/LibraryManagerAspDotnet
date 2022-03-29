@@ -8,5 +8,5 @@ public class DetailBookViewModel : IViewModel
     public int ID { get; set; }
     public string Title { get; set; } = string.Empty;
     public string? Description { get; set; }
-    public DetailAuthorViewModel Author { get; set; } = new();
+    public DetailAuthorViewModel Author { get; set; } = null!;
 }

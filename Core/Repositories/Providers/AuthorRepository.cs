@@ -1,6 +1,7 @@
 using LibraryManager.Core.Contexts;
 using LibraryManager.Core.Exceptions;
 using LibraryManager.Core.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManager.Core.Repositories;
 
@@ -27,6 +28,11 @@ public class AuthorRepository : IAuthorRepository
         _context.SaveChanges();
     }
 
+    public bool ExistsById(int id)
+    {
+        return _context.Authors.Count(author => author.ID == id) > 0;
+    }
+
     public IEnumerable<Author> FindAll()
     {
         return _context.Authors.ToList();
@@ -42,10 +48,13 @@ public class AuthorRepository : IAuthorRepository
 
     public Author UpdateById(int id, Author model)
     {
-        var author = FindById(id);
-        author.Name = model.Name;
-        author.Bio = model.Bio;
-        _context.SaveChanges();
-        return author;
+        if (ExistsById(id))
+        {
+            model.ID = id;
+            _context.Entry<Author>(model).State = EntityState.Modified;
+            _context.SaveChanges();
+            return model;
+        }
+        throw new AuthorNotFoundException();
     }
 }

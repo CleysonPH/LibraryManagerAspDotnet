@@ -1,5 +1,4 @@
 using LibraryManager.Core.Config;
-using LibraryManager.Core.Contexts;
 using LibraryManager.Core.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
